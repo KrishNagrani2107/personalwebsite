@@ -156,3 +156,15 @@ const wordObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 
 headlineEls.forEach(el => wordObserver.observe(el));
+
+function fitDriveEmbeds() {
+  document.querySelectorAll('.project-video').forEach(container => {
+    const iframe = container.querySelector('iframe');
+    if (!iframe) return;
+    const scale = container.clientWidth / 480;
+    iframe.style.transform = `scale(${scale})`;
+  });
+}
+
+fitDriveEmbeds();
+window.addEventListener('resize', fitDriveEmbeds);
